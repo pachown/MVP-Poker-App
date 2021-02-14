@@ -5,7 +5,7 @@ const Login = ({handleLogin}) => (
     <form id="loginForm" onSubmit={(e)=>handleLogin(e)}>
       Username
       <input type="text" name="playerName"></input>
-      <select id="tableSpot" type="dropdown" name="player">
+      <select id="tableSpot" type="dropdown" name="seat">
         <option value="player1">Spot 1</option>
         <option value="player2">Spot 2</option>
         <option value="player3">Spot 3</option>

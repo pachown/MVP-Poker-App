@@ -3,7 +3,10 @@ const Axios = require('axios');
 // Totally new deck. ID expires every 2 weeks
 const newDeck = () => {
   Axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-  .then((cards) => {return cards.data})
+  .then((cards) => {
+    // console.log(cards.data);
+    return cards.data;
+  })
 }
 
 // Draws one card from the deck
@@ -24,8 +27,16 @@ const drawThree = (deckId) => {
   .then((cards) => {return cards.data});
 }
 
-exports.default = {
+const shuffle = (deckId) => {
+  Axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
+  .then((cards) => {return cards.data});
+}
+
+module.exports = {
+  newDeck: newDeck,
   draw1: drawOne,
   draw2: drawTwo,
-  draw3: drawThree
+  draw3: drawThree,
+  shuffle: shuffle,
 }
+

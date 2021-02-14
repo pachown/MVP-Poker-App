@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon Server/routes.js",
-    "build": "npx webpack --config webpack.config.js --watch"
+    "build": "npx webpack --config webpack.config.js --watch",
+    "seed": "node Database/gameSeed.js"
   },
   "repository": {
     "type": "git",
