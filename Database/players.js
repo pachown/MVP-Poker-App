@@ -6,6 +6,8 @@ const playerSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  action: String,
+  bet: Number,
   funds: Number,
   seat: {
     type: String,
@@ -19,10 +21,23 @@ const playerSchema = new mongoose.Schema({
     {
       code: String,
       image: String,
-    }
+    },
+    {
+      code: String,
+      image: String,
+    },
+    {
+      code: String,
+      image: String,
+    },
+    {
+      code: String,
+      image: String,
+    },
   ],
   button: Boolean,
   myTurn: Boolean,
+  moneyAddedThisStreet: Number,
 });
 
 const Players = mongoose.model('Players', playerSchema);
@@ -46,24 +61,39 @@ module.exports = {
     const playerId = {_id: req.body._id};
     const playerInfo = {
       playerName: req.body.playerName,
+      action: req.body.action,
+      bet: req.body.bet,
       seat: req.body.seat,
       funds: req.body.funds,
       button: req.body.button,
       myTurn: req.body.myTurn,
+      moneyAddedThisStreet: req.body.moneyAddedThisStreet,
       hand: [
         {
           code: req.body.hand[0].code,
-          image: req.body.hand[0].code,
+          image: req.body.hand[0].image,
         },
         {
           code: req.body.hand[1].code,
-          image: req.body.hand[1].code,
+          image: req.body.hand[1].image,
+        },
+        {
+          code: req.body.hand[2].code,
+          image: req.body.hand[2].image,
+        },
+        {
+          code: req.body.hand[3].code,
+          image: req.body.hand[3].image,
+        },
+        {
+          code: req.body.hand[4].code,
+          image: req.body.hand[4].image,
         },
       ],
     };
     Players.updateOne(playerId, playerInfo, (err, result) => {
-      if (err) { res.status(400).send(err);}
-      else {res.status(201).send(result)};
+        if (err) { res.status(400).send(err);}
+        else {console.log('updatedPlayer')};
     })
   },
   add: (req, res) => {

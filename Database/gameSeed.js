@@ -9,6 +9,17 @@ const seedGame = () => {
      deck: {
        deck_id: String,
      },
+     board: [
+      {
+        code: 'none',
+        image: 'https://static7.depositphotos.com/1257959/746/v/950/depositphotos_7461948-stock-illustration-playing-card-back-side-62x90.jpg'
+
+    },{
+        code: 'none',
+        image: 'https://static7.depositphotos.com/1257959/746/v/950/depositphotos_7461948-stock-illustration-playing-card-back-side-62x90.jpg'
+    }
+  ],
+     currentBet: 0,
      seats: {
        player1: {playerName: 'player1', funds: 0},
        player2: {playerName: 'player2', funds: 0},

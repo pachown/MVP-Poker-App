@@ -34,6 +34,9 @@ app.get('/api/player:id', (req, res) => {
 app.post('/api/player', (req, res) => {
   Controller.addPlayer(req, res);
 });
+app.put('/api/player:id', (req, res) => {
+  Controller.updatePlayer(req, res);
+})
 // app.put('/api/player:id', (req, res) => {
 
 // });

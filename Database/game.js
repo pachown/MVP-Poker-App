@@ -7,6 +7,17 @@ const gameSchema = new mongoose.Schema({
   pot: Number,
   board: Array,
   deckId: String,
+  currentBet: Number,
+  board: [
+    {
+      code: String,
+      image: String,
+    },
+    {
+      code: String,
+      image: String,
+    },
+  ],
   seats: {
     player1: {  playerName: {
       type: String,
@@ -17,7 +28,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player2: {  playerName: {
@@ -29,7 +39,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player3: {  playerName: {
@@ -41,7 +50,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player4: {  playerName: {
@@ -53,7 +61,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player5: {  playerName: {
@@ -65,7 +72,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player7: {  playerName: {
@@ -77,7 +83,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player6: {  playerName: {
@@ -89,7 +94,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player8: {  playerName: {
@@ -101,7 +105,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
     player9: {  playerName: {
@@ -113,7 +116,6 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
-    hand: Array,
     button: Boolean,
     myTurn: Boolean,},
   },
@@ -124,24 +126,35 @@ const Game = mongoose.model('Game', gameSchema);
 module.exports = {
   Game,
   updateGame: (req, res) => {
-
+// console.log(req.body.board);
     let gameId = {_id: req.body.id};
     let data = {
       dealerBtn: req.body.dealerBtn,
       street: req.body.street,
       pot: req.body.pot,
       deck: req.body.deck,
+      currentBet: req.body.currentBet,
       seats: {
-        player1: req.body.player1,
-        player2: req.body.player2,
-        player3: req.body.player3,
-        player4: req.body.player4,
-        player5: req.body.player5,
-        player7: req.body.player6,
-        player6: req.body.player7,
-        player8: req.body.player8,
-        player9: req.body.player9,
-      }
+        player1: req.body.seats.player1,
+        player2: req.body.seats.player2,
+        player3: req.body.seats.player3,
+        player4: req.body.seats.player4,
+        player5: req.body.seats.player5,
+        player7: req.body.seats.player6,
+        player6: req.body.seats.player7,
+        player8: req.body.seats.player8,
+        player9: req.body.seats.player9,
+      },
+      board: [
+        {
+          code: req.body.board[0].code,
+          image: req.body.board[0].image,
+        },
+        {
+          code: req.body.board[1].code,
+          image: req.body.board[1].image,
+        },
+      ]
     }
     let options = {
       upsert: true,
@@ -151,9 +164,6 @@ module.exports = {
       if (err) { console.log('Could not update game DB') }
       else {
         console.log('Updated DB');
-        if (res) {
-          res.status(200).send(result);
-        }
       }
     })
   }

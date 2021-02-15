@@ -14,6 +14,9 @@ const start = (req, res) => {
 const addPlayer = (req, res) => {
   Players.add(req, res);
 }
+const updatePlayer = (req, res) => {
+  Players.add(req, res);
+}
 const RemovePlayer = (req, res) => {
 
 }
@@ -31,30 +34,26 @@ const deletePlayer = (req, res) => {
 }
 // Returns playerState and gameState data
 const getGameState = (req, res) => {
-  let gameData = {
-    gameState: {
-      seats: {
-        player1: {playerName: 'player1', funds: 0},
-        player2: {playerName: 'player2', funds: 0},
-        player3: {playerName: 'player3', funds: 0},
-        player4: {playerName: 'player4', funds: 0},
-        player5: {playerName: 'player5', funds: 0},
-        player6: {playerName: 'player6', funds: 0},
-        player7: {playerName: 'player7', funds: 0},
-        player8: {playerName: 'player8', funds: 0},
-        player9: {playerName: 'player9', funds: 0},
-      },
-    },
-  }
-  Players.Players.find({}, (err, result) => {
-    if (err) {res.status(400).send(err)}
+  let gameData;
+  Game.Game.findOne({}, (err, result) => {
+    if (err) {console.log(err)}
     else
-    {
-      for (var i = 0; i < result.length; i++) {
-        gameData.gameState.seats[result[i].seat] = result[i]
-      }
-  }}).then(()=>{
-    res.status(201).send(gameData);
+    {gameData = result;}
+  }).then(()=>{
+    Players.Players.find({}, (err, result) => {
+      if (err) {res.status(400).send(err)}
+      else
+      {
+        for (var i = 0; i < result.length; i++) {
+
+            gameData.seats[result[i].seat] = result[i]
+        }
+    }}).then(()=>{
+      res.status(201).send(gameData);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   })
 }
 
@@ -64,5 +63,6 @@ module.exports = {
   getPlayer,
   getPlayers,
   getGameState,
+  updatePlayer,
   deletePlayer,
 }
