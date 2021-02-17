@@ -66,7 +66,7 @@ class App extends React.Component {
       funds: 1000,
       seat: e.target.seat.value,
     }
-    Axios.post('/api/player', playerData)
+    Axios.post('http://13.57.194.192/api/player', playerData)
       .then((res) => {
         this.setState({
           personalId: res.data._id,
@@ -79,7 +79,7 @@ class App extends React.Component {
       })
   }
   getGameState() {
-    Axios.get('/api/gameState')
+    Axios.get('http://13.57.194.192/api/gameState')
       .then((gameInfo) => {
         this.setState({
           gameState: gameInfo.data,
@@ -99,7 +99,7 @@ class App extends React.Component {
       })
   }
   getPlayerState() {
-    Axios.get(`/api/player${this.state.personalId}`,
+    Axios.get(`http://13.57.194.192/api/player${this.state.personalId}`,
       {
         params: {
           id: this.state.personalId
@@ -116,7 +116,7 @@ class App extends React.Component {
   }
   updatePlayerState() {
     const player = this.state.playerState;
-    Axios.put(`/api/player${this.state.personalId}`, player)
+    Axios.put(`http://13.57.194.192/api/player${this.state.personalId}`, player)
       .then((res) => {
         console.log(res.data);
       })
@@ -126,7 +126,7 @@ class App extends React.Component {
   }
   startRound(e) {
     e.preventDefault();
-    Axios.get('/api/gameStart',)
+    Axios.get('http://13.57.194.192/api/gameStart',)
       .then((res) => {
       })
   }
@@ -155,7 +155,7 @@ class App extends React.Component {
 
   showDown(e) {
     e.preventDefault();
-    Axios.get('/api/winner')
+    Axios.get('http://13.57.194.192/api/winner')
     .then((winner) => {
     })
     .catch((err) => {
@@ -181,7 +181,7 @@ class App extends React.Component {
   }
   inactivePlayer(e) {
     e.preventDefault()
-    Axios.delete(`/api/player/${this.state.personalId}`,
+    Axios.delete(`http://13.57.194.192/api/player/${this.state.personalId}`,
       {
         params: {
           id: this.state.personalId
