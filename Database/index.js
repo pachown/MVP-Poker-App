@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://localhost/poker';
+const mongoURI = 'mongodb+srv://pachown:2QZ8J6jJoGtj5NOA@cluster0.sr3q8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 const db = mongoose.connect(mongoURI, {
   useNewUrlParser: true,

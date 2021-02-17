@@ -20,15 +20,6 @@ app.get('/api/gameStart', (req, res) => {
 app.get('/api/winner', (req, res) => {
   Controller.showdown(req, res);
 })
-// app.post('/api/gameState', (req, res) => {
-
-// });
-// app.put('/api/gameState:id', (req, res) => {
-
-// });
-// app.delete('/api/gameState:id', (req, res) => {
-
-// });
 
 // Player Routes
 app.get('/api/player:id', (req, res) => {
@@ -40,9 +31,7 @@ app.post('/api/player', (req, res) => {
 app.put('/api/player:id', (req, res) => {
   Controller.updatePlayer(req, res);
 })
-// app.put('/api/player:id', (req, res) => {
 
-// });
 app.delete('/api/player/:id', (req, res) => {
   console.log('hello');
   Controller.deletePlayer(req, res);
