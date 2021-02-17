@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Controls = ({maxBet, handleBet, handleCallAndCheck, handleFold}) => (
-  <div>
+  <div class="controls">
     ACTION IS ON YOU
-    <form>
+    <form onSubmit={(e)=>{handleBet(e)}}>
       <label>
       RAISE AMOUNT
       <input type="number" id="raiseAmount" name="bet" min="10" max={`"${maxBet}"`} />

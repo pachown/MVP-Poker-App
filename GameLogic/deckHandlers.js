@@ -23,14 +23,19 @@ const drawTwo = (deckId) => {
 
 // Draws three cards from the deck
 const drawThree = (deckId) => {
-  Axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=23`)
+  Axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
   .then((cards) => {return cards.data});
 }
 
+// https://deckofcardsapi.com/api/deck/2lcl0x2x6fsm/draw/?count=52
+let deckObj = []
 const shuffle = (deckId) => {
-  Axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
-  .then((cards) => {return cards.data});
+  Axios.get(`https://deckofcardsapi.com/api/deck/2lcl0x2x6fsm/shuffle/`)
+  .then((cards) => console.log(cards.data.cards));
 }
+
+
+
 
 module.exports = {
   newDeck: newDeck,

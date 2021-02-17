@@ -17,6 +17,9 @@ app.get('/api/gameState', (req, res) => {
 app.get('/api/gameStart', (req, res) => {
   Controller.start(req, res);
 })
+app.get('/api/winner', (req, res) => {
+  Controller.showdown(req, res);
+})
 // app.post('/api/gameState', (req, res) => {
 
 // });

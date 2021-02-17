@@ -8,7 +8,20 @@ const gameSchema = new mongoose.Schema({
   board: Array,
   deckId: String,
   currentBet: Number,
+  winner: String,
   board: [
+    {
+      code: String,
+      image: String,
+    },
+    {
+      code: String,
+      image: String,
+    },
+    {
+      code: String,
+      image: String,
+    },
     {
       code: String,
       image: String,
@@ -23,101 +36,201 @@ const gameSchema = new mongoose.Schema({
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]
+  },
     player2: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player3: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player4: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player5: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player7: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player6: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player8: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
     player9: {  playerName: {
       type: String,
       unique: true,
     },
+    wins: Number,
     funds: Number,
     seat: {
       type: String,
       unique: true,
     },
     button: Boolean,
-    myTurn: Boolean,},
+    myTurn: Boolean,
+    hand: [
+      {
+        code: String,
+        image: String,
+      },
+      {
+        code: String,
+        image: String,
+      },
+    ]},
   },
 });
 
@@ -133,7 +246,9 @@ module.exports = {
       street: req.body.street,
       pot: req.body.pot,
       deck: req.body.deck,
+      wins: req.body.wins,
       currentBet: req.body.currentBet,
+      winner: req.body.winner,
       seats: {
         player1: req.body.seats.player1,
         player2: req.body.seats.player2,
@@ -154,10 +269,24 @@ module.exports = {
           code: req.body.board[1].code,
           image: req.body.board[1].image,
         },
+        {
+          code: req.body.board[2].code,
+          image: req.body.board[2].image,
+        },
+        {
+          code: req.body.board[3].code,
+          image: req.body.board[3].image,
+        },
+        {
+          code: req.body.board[4].code,
+          image: req.body.board[4].image,
+        },
+
       ]
     }
     let options = {
       upsert: true,
+      useFindAndModify: false,
     }
 
     Game.findOneAndUpdate(gameId, data, options, (err, result) => {

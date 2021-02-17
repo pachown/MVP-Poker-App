@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb://localhost/poker';
-const Game = './game.js';
-const Players = './players.js';
-const Axios = 'axios';
 
 const db = mongoose.connect(mongoURI, {
   useNewUrlParser: true,

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const db = require('./index.js');
+require('newrelic');
 
 const playerSchema = new mongoose.Schema({
   playerName: {
@@ -7,6 +8,7 @@ const playerSchema = new mongoose.Schema({
     unique: true,
   },
   action: String,
+  wins: Number,
   bet: Number,
   funds: Number,
   seat: {
@@ -14,18 +16,6 @@ const playerSchema = new mongoose.Schema({
     unique: true,
   },
   hand: [
-    {
-      code: String,
-      image: String,
-    },
-    {
-      code: String,
-      image: String,
-    },
-    {
-      code: String,
-      image: String,
-    },
     {
       code: String,
       image: String,
@@ -76,18 +66,6 @@ module.exports = {
         {
           code: req.body.hand[1].code,
           image: req.body.hand[1].image,
-        },
-        {
-          code: req.body.hand[2].code,
-          image: req.body.hand[2].image,
-        },
-        {
-          code: req.body.hand[3].code,
-          image: req.body.hand[3].image,
-        },
-        {
-          code: req.body.hand[4].code,
-          image: req.body.hand[4].image,
         },
       ],
     };
