@@ -5,7 +5,7 @@ module.exports = {
   entry: './Client/src',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './Client/dist')
+    path: path.resolve(__dirname, ' /home/ec2-user/MVP-Poker-App/Client/dist')
   },
   module: {
     rules: [
