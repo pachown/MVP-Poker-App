@@ -1,0 +1,145 @@
+body {
+  position:absolute;
+  top: 100px;
+  left: 100px;
+  size: 1.2rem;
+  background-color: #282724;
+  color: #e2b892;
+  font-size: 1.5rem;
+  font-family: Garamond, serif'
+}
+
+h1 {
+  position: relative;
+  color: #FFCB00;
+}
+.title, .log-in {
+  position: relative;
+}
+#cards {
+  position: absolute;
+  top: 250px;
+  left: 175px;
+}
+#player1 {
+position: absolute;
+top: 625px;
+left: 400px;
+}
+#player2 {
+  position: absolute;
+  left: 675px;
+  bottom: 15px;
+}
+#player3 {
+  position: absolute;
+  left: 815px;
+  bottom: 235px;
+}
+#player4 {
+  position: absolute;
+  left: 775px;
+  bottom: 450px;
+}
+#player5 {
+  position: absolute;
+  left:525px;
+  bottom: 535px;
+}
+#player6 {
+  position: absolute;
+  left: 250px;
+  bottom: 535px;
+}
+#player7 {
+  position: absolute;
+  left: -100px;
+  bottom: 400px;
+}
+#player8 {
+  position: absolute;
+  left: -100px;
+  bottom: 225px;
+}
+#player9 {
+  position: absolute;
+  left: 100px;
+  bottom: 15px
+}
+
+#table {
+  background-color: #319e16;
+  height: 500px;
+  width: 800px;
+  border: 3px solid black;
+  border-radius: 450px;
+}
+.card {
+  height: 150px;
+  width: 100px;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  left: 300px;
+  padding: 10px;
+  border-width: 10px;
+}
+.username {
+  position: absolute;
+  font-size: 2rem;
+}
+#start {
+  position: relative;
+  left:800px;
+  padding:0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius:2em;
+  font-weight:300;
+  color:white;
+  background-color:#EA7100;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+#start:hover {
+  background-color:#FFCB00
+}
+#log-out {
+  position: relative;
+  left:800px;
+  padding:0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius:2em;
+  font-weight:300;
+  color:white;
+  background-color:#EA7100;
+  text-align:center;
+  transition: all 0.2s;
+}
+#log-out:hover {
+  background-color:#FFCB00
+}
+.hand-and-controls {
+  position:absolute;
+}
+#show-down  {
+  position: relative;
+  left:800px;
+  padding:0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius:2em;
+  font-weight:300;
+  color:white;
+  background-color:#EA7100;
+  text-align:center;
+  transition: all 0.2s;
+}
+#show-down  {
+  background-color:#FFCB00
+}
+.smallimg {
+  height: 50px;
+  width:35px;
+}
